@@ -1,9 +1,10 @@
-function Tile({className,value, onClickTiles}) {
+
+function Tile({className,value, onClickTiles,over,out,isHovering}) {
+    
+    
     return ( 
-        <button className={`tile ${className}`} onClick={onClickTiles}>{value}</button>
-
-
-
+        <button             
+        onClick={onClickTiles}  onMouseOver={over} onMouseOut={out} className={isHovering ? 'hovered' : 'not-hovered'}>{value}</button>
      );
 }
 

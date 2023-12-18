@@ -3,10 +3,21 @@ import {useState} from 'react'
 
 const PLAYER_X = 'X'
 const PLAYER_O = 'O'
+function PlayerStatus() {
+
+    return <span>The player status is {}</span>
+}
 function Board() {
- 
-    const [tiles, setTiles] = useState(Array(9).fill(null))
+    const [isX, setIsX] = useState(true)
+     const [tiles, setTiles] = useState(Array(9).fill(null))
     const [playerStatus, setPlayerStatus] = useState(PLAYER_X)
+    const [isHovering,setIsHovering] = useState(false)
+    function handleMouseOver() {
+        setIsHovering(true)
+    }
+    function handleMouseOut() {
+        setIsHovering(false)
+    }
     function handleCLick(i) {
         const newTiles = tiles.slice()
         
@@ -22,6 +33,10 @@ function Board() {
         }
         calculateWinner()
    
+        }
+        function PlayerStatus() {
+    
+            return <span>The player status is {playerStatus}</span>
         }
         function Showwinner() {
             if(calculateWinner()) {
@@ -42,22 +57,23 @@ function Board() {
     }
     return ( <div className="board">
        
-            <Tile  value = {tiles[0]}   onClickTiles = {() => {handleCLick(0)} } className='right-border bottom-border' />
-            <Tile value = {tiles[1]} onClickTiles = {() => {handleCLick(1)} }   className='right-border bottom-border' />
-            <Tile value = {tiles[2]}  onClickTiles = {() => {handleCLick(2)} }   className='bottom-border' />
+            <Tile  value = {tiles[0]} over={() => handleMouseOver(0)} out={handleMouseOut} isHovering={isHovering}  onClickTiles = {() => {handleCLick(0)} }    className='right-border bottom-border' />
+            <Tile value = {tiles[1]} over={handleMouseOver} out={handleMouseOut} isHovering={isHovering} onClickTiles = {() => {handleCLick(1)} }   className='right-border bottom-border' />
+            <Tile value = {tiles[2]} over={handleMouseOver} out={handleMouseOut} isHovering={isHovering}  onClickTiles = {() => {handleCLick(2)} }     className='bottom-border' />
+    
+            <Tile value = {tiles[3]} over={handleMouseOver} out={handleMouseOut} isHovering={isHovering} onClickTiles = {() => {handleCLick(3)} }   className='right-border bottom-border' />
+            <Tile value = {tiles[4]} over={handleMouseOver} out={handleMouseOut} isHovering={isHovering}  onClickTiles = {() => {handleCLick(4)} }    className='right-border bottom-border' />
+            <Tile  value = {tiles[5]} over={handleMouseOver} out={handleMouseOut} isHovering={isHovering} onClickTiles = {() => {handleCLick(5)} }     className='bottom-border' />
          
-        
-            <Tile value = {tiles[3]} onClickTiles = {() => {handleCLick(3)} }   className='right-border bottom-border' />
-            <Tile value = {tiles[4]}  onClickTiles = {() => {handleCLick(4)} } className='right-border bottom-border' />
-            <Tile value = {tiles[5]} onClickTiles = {() => {handleCLick(5)} }    className='bottom-border' />
-         
-            <Tile value = {tiles[6]}  onClickTiles = {() => {handleCLick(6)} }  className='right-border ' />
-            <Tile value = {tiles[7]} onClickTiles = {() => {handleCLick(7)} }   className='right-border ' />
-            <Tile value ={tiles[8]} onClickTiles = {() => {handleCLick(8)} }   />
+            <Tile value = {tiles[6]} over={handleMouseOver} out={handleMouseOut} isHovering={isHovering}  onClickTiles = {() => {handleCLick(6)} }   className='right-border ' />
+            <Tile value = {tiles[7]} over={handleMouseOver} out={handleMouseOut} isHovering={isHovering} onClickTiles = {() => {handleCLick(7)} }    className='right-border '   />
+            <Tile value ={tiles[8]} over={handleMouseOver} out={handleMouseOut} isHovering={isHovering} onClickTiles = {() => {handleCLick(8)} }   />
          
             <div className="strike">
             {Showwinner()}
-
+           <div>
+            {PlayerStatus()}
+           </div>
 
     </div>
     </div>
