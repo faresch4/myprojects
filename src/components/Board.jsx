@@ -1,12 +1,10 @@
+import State from "./State";
 import Tile from "./Tile";
 import {useState} from 'react'
 
 const PLAYER_X = 'X'
 const PLAYER_O = 'O'
-function PlayerStatus() {
 
-    return <span>The player status is {}</span>
-}
 function Board() {
     const [isX, setIsX] = useState(true)
      const [tiles, setTiles] = useState(Array(9).fill(null))
@@ -34,10 +32,7 @@ function Board() {
         calculateWinner()
    
         }
-        function PlayerStatus() {
-    
-            return <span>The player status is {playerStatus}</span>
-        }
+       
         function Showwinner() {
             if(calculateWinner()) {
                 return <span>Winner is {calculateWinner()}</span>
@@ -71,9 +66,7 @@ function Board() {
          
             <div className="strike">
             {Showwinner()}
-           <div>
-            {PlayerStatus()}
-           </div>
+            <State playerStatus={playerStatus} />
 
     </div>
     </div>
