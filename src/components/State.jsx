@@ -1,10 +1,4 @@
-function State({playerStatus}) {
-    
-    return (  
-         <div>The next player is {playerStatus}</div>
-
-
-    );
+function State() {
+   
 }
-
 export default State;

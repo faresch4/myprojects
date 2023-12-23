@@ -1,79 +1,90 @@
-import State from "./State";
+import { useState } from "react";
 import Tile from "./Tile";
-import {useState} from 'react'
 
-const PLAYER_X = 'X'
-const PLAYER_O = 'O'
 
 function Board() {
-    const [isX, setIsX] = useState(true)
-     const [tiles, setTiles] = useState(Array(9).fill(null))
-    const [playerStatus, setPlayerStatus] = useState(PLAYER_X)
-    const [isHovering,setIsHovering] = useState(false)
-    function handleMouseOver() {
-        setIsHovering(true)
-    }
-    function handleMouseOut() {
-        setIsHovering(false)
-    }
-    function handleCLick(i) {
-        const newTiles = tiles.slice()
-        
-        if(!tiles[i] && calculateWinner() === null) { // we use () to call the function to know its returned state
-            if(playerStatus === PLAYER_X) {
-                newTiles[i] = 'X'
-            setPlayerStatus(PLAYER_O)
-            }else {
-                newTiles[i] = 'O'
-                setPlayerStatus(PLAYER_X)
-            }
-            setTiles(newTiles)
-        }
-        calculateWinner()
-   
-        }
-       
-        function Showwinner() {
-            if(calculateWinner()) {
-                return <span>Winner is {calculateWinner()}</span>
-            }if(!calculateWinner() && tiles.every(element => element !== null))
-            return <span>No winner</span>
-               } 
-    
- function calculateWinner() {
-        let win = [[0,1,2], [3,4,5], [6,7,8],[0,4,8], [0,3,6], [1,4,7],[2,5,8],[2,4,6]]
-   
-        for(let combo of win ){
-            if(tiles[combo[0]] == tiles[combo[1]] && tiles[combo[1]] == tiles[combo[2]]) {
-               return tiles[combo[0]]
-            }
-        }
-        return null
-    }
-    return ( <div className="board">
-       
-            <Tile  value = {tiles[0]} over={() => handleMouseOver(0)} out={handleMouseOut} isHovering={isHovering}  onClickTiles = {() => {handleCLick(0)} }    className='right-border bottom-border' />
-            <Tile value = {tiles[1]} over={handleMouseOver} out={handleMouseOut} isHovering={isHovering} onClickTiles = {() => {handleCLick(1)} }   className='right-border bottom-border' />
-            <Tile value = {tiles[2]} over={handleMouseOver} out={handleMouseOut} isHovering={isHovering}  onClickTiles = {() => {handleCLick(2)} }     className='bottom-border' />
-    
-            <Tile value = {tiles[3]} over={handleMouseOver} out={handleMouseOut} isHovering={isHovering} onClickTiles = {() => {handleCLick(3)} }   className='right-border bottom-border' />
-            <Tile value = {tiles[4]} over={handleMouseOver} out={handleMouseOut} isHovering={isHovering}  onClickTiles = {() => {handleCLick(4)} }    className='right-border bottom-border' />
-            <Tile  value = {tiles[5]} over={handleMouseOver} out={handleMouseOut} isHovering={isHovering} onClickTiles = {() => {handleCLick(5)} }     className='bottom-border' />
-         
-            <Tile value = {tiles[6]} over={handleMouseOver} out={handleMouseOut} isHovering={isHovering}  onClickTiles = {() => {handleCLick(6)} }   className='right-border ' />
-            <Tile value = {tiles[7]} over={handleMouseOver} out={handleMouseOut} isHovering={isHovering} onClickTiles = {() => {handleCLick(7)} }    className='right-border '   />
-            <Tile value ={tiles[8]} over={handleMouseOver} out={handleMouseOut} isHovering={isHovering} onClickTiles = {() => {handleCLick(8)} }   />
-         
-            <div className="strike">
-            {Showwinner()}
-            <State playerStatus={playerStatus} />
-
-    </div>
-    </div>
-  
- );
- 
+  const [isX, setIsX] = useState(true);
+const [value, setValue] = useState("X");
+const [board, setBoard] = useState(Array(9).fill(null));
+function handleCLick(i) {
+  let boardCopy = board.slice();
+  if (isX) {
+    boardCopy[i] = "X";
+    setBoard(boardCopy);
+  } else {
+    boardCopy[i] = "O";
+    setBoard(boardCopy);
+  }
+  setIsX(!isX);
 }
-
+  return (
+    <div className="board">
+      <Tile
+        className="bottom-border right-border"
+        doWhenClick={() => {
+          handleCLick(0);
+        }}
+        value={board[0]}
+      />
+      <Tile
+        className="bottom-border right-border"
+        doWhenClick={() => {
+          handleCLick(1);
+        }}
+        value={board[1]}
+      />
+      <Tile
+        className="bottom-border"
+        doWhenClick={() => {
+          handleCLick(2);
+        }}
+        value={board[2]}
+      />
+      <Tile
+        className="bottom-border right-border"
+        doWhenClick={() => {
+          handleCLick(3);
+        }}
+        value={board[3]}
+      />
+      <Tile
+        className="bottom-border right-border"
+        doWhenClick={() => {
+          handleCLick(4);
+          
+        }}
+        value={board[4]}
+      />
+      <Tile
+        className="bottom-border"
+        doWhenClick={() => {
+          handleCLick(5);
+        }}
+        value={board[5]}
+      />
+      <Tile
+        className="right-border"
+        doWhenClick={() => {
+          handleCLick(6);
+        }}
+        value={board[6]}
+      />
+      <Tile
+        className="right-border"
+        doWhenClick={() => {
+          handleCLick(7);
+        }}
+        value={board[7]}
+      />
+      <Tile
+        className=""
+        doWhenClick={() => {
+          handleCLick(8);
+        }}
+        value={board[8]}
+      />
+    </div>
+  );
+}
 
 export default Board;
