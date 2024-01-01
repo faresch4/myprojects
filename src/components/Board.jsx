@@ -4,7 +4,7 @@ import Tile from "./Tile";
 function Board() {
   const [isX, setIsX] = useState(true);
   const [board, setBoard] = useState(Array(9).fill(null));
-  const [winner, setWinner] = useState(null)
+  const [winner, setWinner] = useState(null);
   function calculateWinner(boardCopy) {
     const winCombos = [
       [0, 1, 2],
@@ -39,20 +39,15 @@ function Board() {
       } else {
         boardCopy[i] = "O";
       }
-      setBoard(boardCopy);
-      setIsX(!isX);
-      // calculateWinner(boardCopy)
-      let winner = calculateWinner(boardCopy)
+    setBoard(boardCopy);
+    setIsX(!isX);
+    let winner = calculateWinner(boardCopy);
 
-   // storing the function result in a variable
-
-      if(winner) { 
-          setWinner(winner)
-      }
+    if (winner) {
+      setWinner(winner);
     }
+  }
 
-
-  
   return (
     <div className="board">
       <Tile
@@ -119,6 +114,7 @@ function Board() {
         value={board[8]}
       />
       {winner && <span>{winner} is the winner !</span>}
+      {board.every((b) => b != null) ? <span>No winner</span> : ""}
     </div>
   );
 }
