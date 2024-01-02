@@ -4,10 +4,11 @@ import Restart from './Restart'
 import { useState } from "react";
 
 function Tictac() {
+ 
   return (
     <>
       <span className="title">Tic Tac Toe</span>
-      <Board />
+      <Board stopGame={() => stopGame()}/>
     </>
   );
 }
