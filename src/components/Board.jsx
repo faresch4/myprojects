@@ -2,15 +2,15 @@ import { useState, useEffect } from "react";
 import Tile from "./Tile";
 import Restart from "./Restart";
 
-
-function Board() {
-  const [isX, setIsX] = useState(true);
+function Board({isX, setIsX}) {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [winner, setWinner] = useState(null);
   let boardCopy = board.slice();
   function stopGame() {
     setBoard(Array(9).fill(null));
-    boardCopy = Array(9).fill(null)
+    boardCopy = Array(9).fill(null);
+    setIsX(true)
+    setWinner(null)
   }
   function calculateWinner(boardCopy) {
     const winCombos = [
@@ -31,16 +31,13 @@ function Board() {
         boardCopy[a] === boardCopy[b] &&
         boardCopy[a] === boardCopy[c]
       ) {
-
-          return boardCopy[a]; // Return the winning player
-
+        return boardCopy[a]; // Return the winning player
       }
     }
     return null;
   }
 
   function handleCLick(i) {
-
     if (!board[i] && !calculateWinner(boardCopy))
       if (isX) {
         boardCopy[i] = "X";
@@ -53,7 +50,6 @@ function Board() {
 
     if (winner) {
       setWinner(winner);
-    
     }
   }
   return (
@@ -121,12 +117,11 @@ function Board() {
         }}
         value={board[8]}
       />
-      {winner && board.some(a => a != null)   ? {winner} : ''
-      } 
+      {winner   ? `${winner} is the winner` : ""}
 
       {board.every((b) => b != null) ? <span>No winner</span> : ""}
       <Restart stopGame={() => stopGame()} />
-    </div>  
+    </div>
   );
 }
 
