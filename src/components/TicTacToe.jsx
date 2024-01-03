@@ -7,12 +7,14 @@ function Tictac() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [winner, setWinner] = useState(null);
   const [isChoiceMade, setChoice] = useState(false);
+  const [unMount, setUnMount] = useState(false)
   let boardCopy = board.slice();
   function stopGame() {
     setBoard(Array(9).fill(null));
     boardCopy = Array(9).fill(null);
     setIsX(true);
     setWinner(null);
+    setUnMount(false)
   }
 
   function calculateWinner(boardCopy) {
@@ -42,7 +44,7 @@ function Tictac() {
 
   function handleCLick(i) {
     if (!board[i] && !calculateWinner(boardCopy))
-      if (isChoiceMade) {
+      if (isChoiceMade && unMount) {
         if (isX) {
           boardCopy[i] = "X";
         } else {
@@ -64,10 +66,14 @@ function Tictac() {
   function setToX() {
     setIsX(true);
     setChoice(true);
+    setUnMount(true)
+
   }
   function setToO() {
     setIsX(false);
     setChoice(true);
+    setUnMount(true)
+
   }
   return (
     <>
@@ -82,13 +88,13 @@ function Tictac() {
         stopGame={() => stopGame()}
         setChoice={setChoice}
       />
-      <Choice
+      {!unMount && <Choice 
         isX={isX}
         setIsX={setIsX}
         setToX={() => setToX()}
         setToO={() => setToO()}
         setChoice={setChoice}
-      />
+      />}
       <Restart stopGame={() => stopGame()} />
     </>
   );
