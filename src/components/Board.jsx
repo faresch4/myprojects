@@ -10,10 +10,17 @@ function Board({
   isX,
   calculateWinner,
 }) {
+  function getClassName(index) {
+    let className = ''
+    if(![2,5,8].includes(index)) className += 'right-border ' 
+    if(index < 6) className += 'bottom-border'
+    return className
+  }
+  console.log()
   return (
     <div className="board">
       <Tile
-        className="bottom-border right-border"
+        className={getClassName(0)}
         doWhenClick={() => {
           handleCLick(0);
         }}
@@ -26,7 +33,7 @@ function Board({
         winner={winner}
 />
       <Tile
-        className="bottom-border right-border"
+        className={getClassName(1)}
         doWhenClick={() => {
           handleCLick(1);
         }}
