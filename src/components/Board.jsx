@@ -1,7 +1,7 @@
 import Tile from "./Tile";
 
 function Board({
-  handleClick,
+  handleCLick,
   board,
   winner,
   handleMouseEnter,
@@ -31,7 +31,7 @@ function Board({
          <Tile 
          key={index}
          className={getClassName(index)}
-         doWhenClick={() => handleClick(index)}
+         doWhenClick={() => handleCLick(index)}
          value={value}
          {...commonProps}
          />
