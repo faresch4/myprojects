@@ -15,7 +15,9 @@ let Tile = ({
   }
   function handleMouseEnter() {
     if (!value && unMount) setIsHovered(true); // fill the tile with X or O
+  
   }
+  let setToLowerOpacity = {opacity: 0.5}
   return (
     <button
       className={`tile ${className}`}
@@ -24,9 +26,9 @@ let Tile = ({
       onMouseLeave={handleMouseLeave}
     >
       {isHovered && value == null && winner==null
-        ? isX
-          ? "X"
-          : "O"
+        ? <span style={setToLowerOpacity}>{isX
+        ? "X"
+        : "O"}</span>
         : value}
     </button>
   );
