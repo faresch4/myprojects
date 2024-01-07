@@ -54,7 +54,9 @@ function Tictac() {
           boardCopy[i] = "O";
         }
         setBoard(boardCopy);
-        setIsX(!isX);
+       
+         setIsX(!isX)
+    
       }else {
         alert('Please Choose your side first')
       }
@@ -81,13 +83,13 @@ function handleMouseLeave() {
 }
   
   function setToX() {
-    setIsX(true);
+    setIsX(true)
     setChoice(true);
     setUnMount(true)
 
   }
   function setToO() {
-    setIsX(false);
+    setIsX(false)
     setChoice(true);
     setUnMount(true)
 
@@ -107,6 +109,7 @@ function handleMouseLeave() {
         handleMouseEnter={(i) => handleMouseEnter(i)}
         handleMouseLeave={() => handleMouseLeave()}
         unMount={unMount}
+        calculateWinner={() => calculateWinner()}
       />
       {!unMount && <Choice 
         isX={isX}
