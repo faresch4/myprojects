@@ -4,10 +4,13 @@ import Restart from "./Restart";
 import { useState } from "react";
 import Choice from "./Choice";
 function Tictac() {
+  const [isX, setIsX] = useState(null);
   const [board, setBoard] = useState(Array(9).fill(null));
   const [winner, setWinner] = useState(null);
   const [isChoiceMade, setChoice] = useState(false);
   const [unMount, setUnMount] = useState(false)
+ 
+
   let boardCopy = board.slice();
   function stopGame() {
     setBoard(Array(9).fill(null));
@@ -62,7 +65,21 @@ function Tictac() {
       setWinner(winner);
     }
   }
-  const [isX, setIsX] = useState(null);
+  function handleMouseEnter(i) {
+    if(unMount) {
+    boardCopy[i] =  isX ?  <span>X</span> : <span>O</span>
+    setBoard(boardCopy)
+    
+  }
+
+  }
+function handleMouseLeave() {
+  if(unMount) {
+    setBoard(Array(9).fill(null))
+
+  }
+}
+  
   function setToX() {
     setIsX(true);
     setChoice(true);
@@ -87,6 +104,9 @@ function Tictac() {
         board={board}
         stopGame={() => stopGame()}
         setChoice={setChoice}
+        handleMouseEnter={(i) => handleMouseEnter(i)}
+        handleMouseLeave={() => handleMouseLeave()}
+        unMount={unMount}
       />
       {!unMount && <Choice 
         isX={isX}
@@ -98,6 +118,6 @@ function Tictac() {
       <Restart stopGame={() => stopGame()} />
     </>
   );
-}
 
+      }
 export default Tictac;

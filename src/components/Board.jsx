@@ -1,6 +1,6 @@
 import Tile from "./Tile";
 
-function Board({isX, setIsX,handleCLick,board,winner,stopGame}) {
+function Board({handleCLick,board,winner,handleMouseEnter,handleMouseLeave,unMount,isX}) {
   
   return (
     <div className="board">
@@ -10,62 +10,142 @@ function Board({isX, setIsX,handleCLick,board,winner,stopGame}) {
           handleCLick(0);
         }}
         value={board[0]}
+        handleMouseEnter={() => handleMouseEnter(0)}
+        handleMouseLeave={() => handleMouseLeave()}
+        handleCLick={() => handleCLick(0)}
+        unMount={unMount}
+        isX={isX}
+
       />
       <Tile
         className="bottom-border right-border"
         doWhenClick={() => {
           handleCLick(1);
         }}
+
         value={board[1]}
+        handleMouseEnter={() => handleMouseEnter(1)}
+        handleMouseLeave={() => handleMouseLeave()}
+        handleCLick={() => handleCLick(1)}
+
+        unMount={unMount}
+        isX={isX}
+
+
+
       />
       <Tile
         className="bottom-border"
         doWhenClick={() => {
           handleCLick(2);
         }}
+
         value={board[2]}
+        handleMouseEnter={() => handleMouseEnter(2)}
+        handleMouseLeave={() => handleMouseLeave()}
+        handleCLick={() => handleCLick(2)}
+
+        unMount={unMount}
+        isX={isX}
+
+
+
       />
       <Tile
         className="bottom-border right-border"
         doWhenClick={() => {
           handleCLick(3);
         }}
+
         value={board[3]}
+        handleMouseEnter={() => handleMouseEnter(3)}
+        handleMouseLeave={() => handleMouseLeave()}
+        handleCLick={() => handleCLick(3)}
+
+        unMount={unMount}
+        isX={isX}
+
+
+
       />
       <Tile
         className="bottom-border right-border"
         doWhenClick={() => {
           handleCLick(4);
         }}
+
         value={board[4]}
+        handleMouseEnter={() => handleMouseEnter(4)}
+        handleMouseLeave={() => handleMouseLeave()}
+        handleCLick={() => handleCLick(4)}
+
+        unMount={unMount}
+        isX={isX}
+
+
       />
       <Tile
         className="bottom-border"
         doWhenClick={() => {
           handleCLick(5);
         }}
+
         value={board[5]}
+        handleMouseEnter={() => handleMouseEnter(5)}
+        handleMouseLeave={() => handleMouseLeave()}
+        handleCLick={() => handleCLick(5)}
+
+        unMount={unMount}
+        isX={isX}
+
+
       />
       <Tile
         className="right-border"
         doWhenClick={() => {
           handleCLick(6);
         }}
+
         value={board[6]}
+        handleMouseEnter={() => handleMouseEnter(6)}
+        handleMouseLeave={() => handleMouseLeave()}
+        handleCLick={() => handleCLick(6)}
+
+        unMount={unMount}
+        isX={isX}
+
       />
       <Tile
         className="right-border"
         doWhenClick={() => {
           handleCLick(7);
         }}
+
         value={board[7]}
+        handleMouseEnter={() => handleMouseEnter(7)}
+        handleMouseLeave={() => handleMouseLeave()}
+        handleCLick={() => handleCLick(7)}
+
+        unMount={unMount}
+        isX={isX}
+
+
       />
       <Tile
         className=""
         doWhenClick={() => {
           handleCLick(8);
         }}
+
         value={board[8]}
+        handleMouseEnter={() => handleMouseEnter(8)}
+        handleMouseLeave={() => handleMouseLeave()}
+        handleCLick={() => handleCLick(8)}
+
+        unMount={unMount}
+        isX={isX}
+
+
       />
       {winner   ? `${winner} is the winner` : ""}
 
