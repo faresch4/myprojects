@@ -6,7 +6,6 @@ let Tile = ({
   unMount,
   isX,
   handleClick,
-  calculateWinner,
   winner,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
