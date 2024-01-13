@@ -4,6 +4,7 @@ import SearchHolder from './components/SearchHolder'
 import MovieList from './components/MovieList'
 function App() {
 
+ 
   return (
     <>
       <SearchHolder />
