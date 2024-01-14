@@ -1,0 +1,56 @@
+MovieList Component:
+
+Fetch movie data from an API and distribute it to each MovieBox component.
+Implement pagination to control the number of MovieBox components displayed at one time. Consider using a library or write custom logic to handle page changes and data fetching for each page.
+Loading Indicators:
+
+Display a spinner or a progress bar when movies are being fetched to inform users that data is loading.
+MovieBox Dimensions:
+
+Define a fixed width and height for MovieBox components for a uniform look. Use responsive units like em or rem for flexibility across different screen sizes.
+Search Component State:
+
+Maintain the search query in the internal state to manage and submit user input.
+MovieBox Props:
+
+Pass movie data, including posters, as props from MovieList to MovieBox. This decouples the MovieBox from data fetching responsibilities and makes it more reusable.
+MovieBox Click Event:
+
+Implement an onClick event handler for MovieBox that enlarges the movie poster or opens a modal with more details.
+Accessible Labeling:
+
+Use aria-label or a visible <label> element for the search input to guide users effectively, e.g., <input aria-label="Search for movies..." />.
+Lazy Loading Posters:
+
+Use lazy loading for movie posters in MovieBox components to improve page load times and performance.
+Responsive Design:
+
+Apply media queries in CSS to adapt the layout of MovieList and MovieBox components for different devices.
+Error Handling:
+
+Introduce error boundaries around MovieList to catch and handle any errors during API calls or data processing.
+Loading Spinner:
+
+Use a spinner component to indicate data is being loaded. Display it centrally over the MovieList component or within each MovieBox until its content is loaded.
+Styling Approach:
+
+Employ CSS Modules or styled-components to write CSS that's specific to each component, avoiding style conflicts and enhancing maintainability.
+Theming:
+
+Develop a theme with a consistent color palette and
+typography to provide a cohesive look across your website. Utilize CSS variables or a theming library to make it easy to maintain and update styles.
+
+Animations:
+Add subtle animations for actions like loading new movies or hovering over a MovieBox. Use CSS transitions or animation libraries to enhance visual feedback and user interaction.
+When implementing these features, remember to:
+
+Keep components small and focused on a single responsibility.
+Ensure that your code is clean and well-documented.
+Test your components both in isolation and as part of the larger application.
+Consider accessibility at every step to create an inclusive user experience.
+
+if shameless then click , then it console logs shameless 
+
+search input > search button , renders on movie list 
+
+if matches, del all title with non input user title match

@@ -1,15 +1,27 @@
 import { useState } from 'react'
 import './App.css'
-import SearchHolder from './components/SearchHolder'
+import Search from './components/Search'
 import MovieList from './components/MovieList'
+import Title from './components/Title'
+import { movieSearcher } from './assets/contexts/dataHolder'
 function App() {
-
+  const [input, setInput] = useState('')
+  function check() {
+    return input == 'shameless'
+    
+ }
  
   return (
-    <>
-      <SearchHolder />
+    <div className='app'>
+      <movieSearcher.Provider  value={{input,check,setInput}}>
+      <Search />
       <MovieList />
-    </>
+
+      </movieSearcher.Provider>
+ 
+    </div>
+     
+  
   )
 }
 

@@ -1,11 +1,20 @@
+import { useEffect, useState,useContext} from "react";
+import React from "react";
+import SearchBtn from "./SearchBtn";
+import SearchBar from "./SearchBar";
+import Title from "./Title";
+import {  movieSearcher } from '../assets/contexts/dataHolder';
+
 function Search() {
-    return (  
-       <div>
-            <button className="search-btn">Search</button>
+  let {input, setInput,check} = useContext(movieSearcher)
 
-       </div>
+  return (
+    <div className="search">
+      <Title />
+      <SearchBar  input={input} setInput={setInput}/>
 
-    );
+    </div>
+  );
 }
 
 export default Search;
