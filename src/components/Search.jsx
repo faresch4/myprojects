@@ -12,6 +12,8 @@ function Search() {
     <div className="search">
       <Title />
       <SearchBar  input={input} setInput={setInput}/>
+      
+      
 
     </div>
   );

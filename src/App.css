@@ -109,5 +109,26 @@ width: 100%;
   display: flex;
   gap: 1.5rem;
   width: 100%;
+  position: relative;
 }
-
+.right {
+   position: absolute;
+   bottom: -40px;
+   left: 50%;
+   right: 50%;
+   width: 25px;
+   height: 25px;
+   z-index: 88;
+   cursor: pointer;
+}
+.left {
+  transform: rotate(180deg);
+ position: absolute;
+ bottom: -40px;
+ left: 48%;
+ right: 50%;
+ width: 25px;
+ height: 25px;
+ z-index: 99;
+ cursor: pointer;
+}
